@@ -7,7 +7,7 @@
     <title>Job Application</title>
 </head>
 <body>
-    <div class="container">
+    <form class="container" method="post">
         <h1 class="mt-4 mb-4">Job Application</h1>
         <div>
             <label class="mt-4" for="first_name">First Name:</label>
@@ -29,18 +29,27 @@
             <label for="occupation">Current Occupation:</label>
             <br>
             <div id="occupation" class="btn-group-vertical">
-                <input type="radio" class="form-control btn-check" id="employed" name="occupation">
+                <input type="radio" class="form-control btn-check" id="employed" value="employed" name="occupation">
                 <label for="employed" class="btn btn-outline-secondary">Employed</label>
-                <input type="radio"class="form-control btn-check" id="unemployed" name="occupation">
+                <input type="radio"class="form-control btn-check" id="unemployed" value="unemployed" name="occupation">
                 <label for="unemployed" class="btn btn-outline-secondary">Unemployed</label>
-                <input type="radio" class="form-control btn-check" id="self_employed" name="occupation">
+                <input type="radio" class="form-control btn-check" id="self_employed" value="self_employed" name="occupation">
                 <label for="self_employed" class="btn btn-outline-secondary">Self-Employed</label>
-                <input type="radio" class="form-control btn-check" id="student" name="occupation">
+                <input type="radio" class="form-control btn-check" id="student" value="student" name="occupation">
                 <label for="student" class="btn btn-outline-secondary">Student</label>
             </div>
         </div>
-        <button class="btn btn-secondary mt-4" type="button">Submit</button>
-    </div>
+        <button class="btn btn-secondary mt-4" type="submit" value="submit">Submit</button>
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <div class="alert alert-success">
+                    {% for message in messages %}
+                        {{message}}
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endwith %}
+    </form>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"></script>
 </body>
